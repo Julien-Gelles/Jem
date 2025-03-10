@@ -40,21 +40,5 @@ services:
     env_file:
       - .env
 
-  jem_app:
-    build: ./apps/jem-app
-    container_name: jem_app
-    restart: always
-    depends_on:
-      - jem_back
-    volumes:
-      - ./apps/jem-app:/app
-      - ./packages:/packages
-      - /app/node_modules
-    ports:
-      - "5000:5000"
-    env_file:
-      - .env
-    tty: true
-    stdin_open: true
 volumes:
   pgdata:
