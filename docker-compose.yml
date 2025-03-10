@@ -8,9 +8,10 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: mydb
     ports:
-      - "5432:5432"
+      - "2000:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    command: -p 2000
 
   jem_api:
     build: ./apps/jem-api
