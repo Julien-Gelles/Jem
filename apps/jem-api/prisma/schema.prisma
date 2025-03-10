@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  // url      = "postgresql://postgres:postgres@localhost:5432/mydb"
+  url      = env("DATABASE_URL")
+}
+
+model ApiProduct {
+  id                Int     @id @default(autoincrement())
+  name              String
+  image_url         String
+  brand             String
+  category          String
+  nutritional_score String
+  code              String
+  capacity          Decimal
+  capacity_unit     String
+}

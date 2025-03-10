@@ -1,0 +1,7 @@
+{
+  "extends": "../../packages/typescript-config/base.json",
+  "include": ["src/**/*", "src/__tests__/**/*"],
+  "compilerOptions": {
+    "types": ["jest"]
+  }
+}

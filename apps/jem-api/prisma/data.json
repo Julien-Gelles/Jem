@@ -1,0 +1,782 @@
+[
+  {
+    "name": "Eau de source Cristaline",
+    "image_url": "cristaline.jpg",
+    "brand": "Cristaline",
+    "category": "Boissons",
+    "nutritional_score": "A",
+    "code": "3274080005003",
+    "capacity": 1.5,
+    "capacity_unit": "L"
+  },
+  {
+    "name": "Coca Cola zero",
+    "image_url": "coca_cola_zero.jpg",
+    "brand": "Coca Cola",
+    "category": "Boissons",
+    "nutritional_score": "C",
+    "code": "5449000133335",
+    "capacity": 1.5,
+    "capacity_unit": "L"
+  },
+  {
+    "name": "Amandes décortiquées",
+    "image_url": "amandes_decortiquees_simply.jpg",
+    "brand": "Simply",
+    "category": "Fruits à coques",
+    "nutritional_score": "A",
+    "code": "3560071500009",
+    "capacity": 400,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Pain de mie complet",
+    "image_url": "pain_de_mie_harrys.jpg",
+    "brand": "Harrys",
+    "category": "Boulangerie",
+    "nutritional_score": "B",
+    "code": "3228857000852",
+    "capacity": 500,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Lait demi-écrémé",
+    "image_url": "lait_demi_ecreme_lactel.jpg",
+    "brand": "Lactel",
+    "category": "Produits laitiers",
+    "nutritional_score": "B",
+    "code": "3428274200259",
+    "capacity": 1,
+    "capacity_unit": "L"
+  },
+  {
+    "name": "Yaourt nature",
+    "image_url": "yaourt_nature_danone.jpg",
+    "brand": "Danone",
+    "category": "Produits laitiers",
+    "nutritional_score": "A",
+    "code": "3033490004521",
+    "capacity": 500,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Pâtes Spaghetti",
+    "image_url": "pates_spaghetti_barilla.jpg",
+    "brand": "Barilla",
+    "category": "Céréales et pâtes",
+    "nutritional_score": "A",
+    "code": "8076800195057",
+    "capacity": 500,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Riz Basmati",
+    "image_url": "riz_basmati_taureau_aile.jpg",
+    "brand": "Taureau Ailé",
+    "category": "Céréales et pâtes",
+    "nutritional_score": "B",
+    "code": "3038359007224",
+    "capacity": 1,
+    "capacity_unit": "Kg"
+  },
+  {
+    "name": "Filet de saumon",
+    "image_url": "filet_saumon_picard.jpg",
+    "brand": "Picard",
+    "category": "Poisson et fruits de mer",
+    "nutritional_score": "A",
+    "code": "3270160191826",
+    "capacity": 200,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Filets de poulet rôti",
+    "image_url": "filet_poulet_roti_le_gaulois.jpg",
+    "brand": "Le Gaulois",
+    "category": "Viandes",
+    "nutritional_score": "A",
+    "code": "3266980294717",
+    "capacity": 230,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Fromage Emmental",
+    "image_url": "fromage_emmental_president.jpg",
+    "brand": "Président",
+    "category": "Produits laitiers",
+    "nutritional_score": "C",
+    "code": "3228021170022",
+    "capacity": 250,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Chocolat Noir 70%",
+    "image_url": "chocolat_noir_70_lindt.jpg",
+    "brand": "Lindt",
+    "category": "Snacks et desserts",
+    "nutritional_score": "E",
+    "code": "3046920022651",
+    "capacity": 100,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Compote de pommes nature",
+    "image_url": "compote_pommes_nature_andros.jpg",
+    "brand": "Andros",
+    "category": "Fruits",
+    "nutritional_score": "A",
+    "code": "3608580789758",
+    "capacity": 730,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Huile d'olive vierge extra",
+    "image_url": "huile_olive_puget.jpg",
+    "brand": "Puget",
+    "category": "Huiles et condiments",
+    "nutritional_score": "B",
+    "code": "3265470063260",
+    "capacity": 75,
+    "capacity_unit": "cL"
+  },
+  {
+    "name": "Cacahuètes grillées & non salées",
+    "image_url": "cacahuetes_grillees_non_salees_benenuts.jpg",
+    "brand": "Bénénuts",
+    "category": "Fruits à coques",
+    "nutritional_score": "A",
+    "code": "3168930003984",
+    "capacity": 200,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Eau gazeuse Perrier",
+    "image_url": "perrier.jpg",
+    "brand": "Perrier",
+    "category": "Boissons",
+    "nutritional_score": "A",
+    "code": "7613035833272",
+    "capacity": 1,
+    "capacity_unit": "L"
+  },
+  {
+    "name": "Jus d'orange 100% pur jus avec pulpe",
+    "image_url": "jus_orange_tropicana.jpg",
+    "brand": "Tropicana",
+    "category": "Boissons",
+    "nutritional_score": "B",
+    "code": "2502156035243",
+    "capacity": 1,
+    "capacity_unit": "L"
+  },
+  {
+    "name": "Chips nature",
+    "image_url": "chips_nature_lays.jpg",
+    "brand": "Lay's",
+    "category": "Snacks et desserts",
+    "nutritional_score": "C",
+    "code": "3168930003359",
+    "capacity": 145,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Confiture de fraises",
+    "image_url": "confiture_fraises_bonne_maman.jpg",
+    "brand": "Bonne Maman",
+    "category": "Snacks et desserts",
+    "nutritional_score": "D",
+    "code": "3608580758686",
+    "capacity": 320,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Céréales Choco Pops",
+    "image_url": "cereales_choco_pops.jpg",
+    "brand": "Kellogg's",
+    "category": "Céréales et pâtes",
+    "nutritional_score": "D",
+    "code": "5050083560149",
+    "capacity": 450,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Beurre doux",
+    "image_url": "beurre_doux_president.jpg",
+    "brand": "Président",
+    "category": "Produits laitiers",
+    "nutritional_score": "E",
+    "code": "8853251205500",
+    "capacity": 250,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Farine de blé T55",
+    "image_url": "farine_francine_t55.jpg",
+    "brand": "Francine",
+    "category": "Céréales et pâtes",
+    "nutritional_score": "A",
+    "code": "6008120703249",
+    "capacity": 1,
+    "capacity_unit": "Kg"
+  },
+  {
+    "name": "Sardines à l'huile d'olive",
+    "image_url": "sardines_huile_connetable.jpg",
+    "brand": "Connétable",
+    "category": "Poisson et fruits de mer",
+    "nutritional_score": "B",
+    "code": "3263670115819",
+    "capacity": 135,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Cuisses de poulet rôti",
+    "image_url": "cuisses_poulet_roti_le_gaulois.jpg",
+    "brand": "Le Gaulois",
+    "category": "Viandes",
+    "nutritional_score": "C",
+    "code": "3266980273552",
+    "capacity": 700,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Steak haché pur boeuf 5% MG",
+    "image_url": "steak_hache_5_charal.jpg",
+    "brand": "Charal",
+    "category": "Viandes",
+    "nutritional_score": "B",
+    "code": "3181232220286",
+    "capacity": 260,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Pointe de brie",
+    "image_url": "pointe_brie_president.jpg",
+    "brand": "Président",
+    "category": "Produits laitiers",
+    "nutritional_score": "D",
+    "code": "3228021950129",
+    "capacity": 200,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Tablette chocolat noisette",
+    "image_url": "chocolat_noisette_milka.jpg",
+    "brand": "Milka",
+    "category": "Snacks et desserts",
+    "nutritional_score": "E",
+    "code": "3045140118502",
+    "capacity": 100,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Compote pommes fraises",
+    "image_url": "compote_pommes_fraises_charles_et_alice.jpg",
+    "brand": "Charles & Alice",
+    "category": "Fruits",
+    "nutritional_score": "A",
+    "code": "3297760097044",
+    "capacity": 400,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Huile coeur de tournesol",
+    "image_url": "huile_coeur_tournesol_lesieur.jpg",
+    "brand": "Lesieur",
+    "category": "Huiles et condiments",
+    "nutritional_score": "C",
+    "code": "3265471024086",
+    "capacity": 1,
+    "capacity_unit": "L"
+  },
+  {
+    "name": "Vinaigre balsamique de Modène",
+    "image_url": "vinaigre_balsamique_modene_ponti.jpg",
+    "brand": "Ponti",
+    "category": "Huiles et condiments",
+    "nutritional_score": "B",
+    "code": "8001010006558",
+    "capacity": 500,
+    "capacity_unit": "ml"
+  },
+  {
+    "name": "Monster Munch salé",
+    "image_url": "monster_munch_sale_vico.jpg",
+    "brand": "Vico",
+    "category": "Snacks et desserts",
+    "nutritional_score": "D",
+    "code": "3336971307020",
+    "capacity": 85,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Monster Munch cheddar",
+    "image_url": "monster_munch_cheddar_vico.jpg",
+    "brand": "Vico",
+    "category": "Snacks et desserts",
+    "nutritional_score": "D",
+    "code": "3336972103027",
+    "capacity": 85,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Monster Munch bacon",
+    "image_url": "monster_munch_bacon_vico.jpg",
+    "brand": "Vico",
+    "category": "Snacks et desserts",
+    "nutritional_score": "D",
+    "code": "3336972208029",
+    "capacity": 85,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Fanta saveur mangue fruit du dragon",
+    "image_url": "fanta_mangue_fruit_dragon.jpg",
+    "brand": "Fanta",
+    "category": "Boissons",
+    "nutritional_score": "B",
+    "code": "5449000245045",
+    "capacity": 1,
+    "capacity_unit": "L"
+  },
+  {
+    "name": "Jus tropical multivitaminé",
+    "image_url": "jus_tropical_multivitamine_pago.jpg",
+    "brand": "Pago",
+    "category": "Boissons",
+    "nutritional_score": "C",
+    "code": "9002515600530",
+    "capacity": 75,
+    "capacity_unit": "cL"
+  },
+  {
+    "name": "Pringles saveur crème & oignon",
+    "image_url": "pringles_creme_oignon.jpg",
+    "brand": "Pringles",
+    "category": "Snacks et desserts",
+    "nutritional_score": "D",
+    "code": "5053990155385",
+    "capacity": 195,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Confiture d'abricots'",
+    "image_url": "confiture_abricot_el_baraka.jpg",
+    "brand": "El Baraka",
+    "category": "Snacks et desserts",
+    "nutritional_score": "D",
+    "code": "6111184000213",
+    "capacity": 430,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Céréales Crunch",
+    "image_url": "cereales_crunch.jpg",
+    "brand": "Nestlé",
+    "category": "Céréales et pâtes",
+    "nutritional_score": "C",
+    "code": "7613035189027",
+    "capacity": 450,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Tartimiel Lune de Miel doseur",
+    "image_url": "tartimiel_lune_de_miel.jpg",
+    "brand": "Lune de Miel",
+    "category": "Huiles et condiments",
+    "nutritional_score": "D",
+    "code": "3088540004440",
+    "capacity": 250,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Biscottes riche en blé complet",
+    "image_url": "biscottes_ble_complet_heudebert.jpg",
+    "brand": "Heudebert",
+    "category": "Boulangerie",
+    "nutritional_score": "C",
+    "code": "3017760363990",
+    "capacity": 280,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Croissants brioche pur beurre",
+    "image_url": "croissants_pasquier.jpg",
+    "brand": "Pasquier",
+    "category": "Boulangerie",
+    "nutritional_score": "D",
+    "code": "3256540000346",
+    "capacity": 640,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Lait d'amande",
+    "image_url": "lait_amande_alpro.jpg",
+    "brand": "Alpro",
+    "category": "Produits laitiers",
+    "nutritional_score": "B",
+    "code": "5411188112709",
+    "capacity": 1,
+    "capacity_unit": "L"
+  },
+  {
+    "name": "Crème fraîche épaisse",
+    "image_url": "creme_fraiche_epaisse_elle_et_vire.jpg",
+    "brand": "Elle & Vire",
+    "category": "Produits laitiers",
+    "nutritional_score": "D",
+    "code": "3451790439353",
+    "capacity": 324,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Semoule de riz",
+    "image_url": "semoule_riz_tipiak.jpg",
+    "brand": "Tipiak",
+    "category": "Céréales et pâtes",
+    "nutritional_score": "B",
+    "code": "T3165440001905BD",
+    "capacity": 250,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Quinoa tomates olives",
+    "image_url": "quinoa_tomates_olives_bjorg.jpg",
+    "brand": "Bjorg",
+    "category": "Céréales et pâtes",
+    "nutritional_score": "A",
+    "code": "3229820181899",
+    "capacity": 250,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Thon entier nature en boîte",
+    "image_url": "thon_entier_boite_petit_nature.jpg",
+    "brand": "Petit Navire",
+    "category": "Poisson et fruits de mer",
+    "nutritional_score": "A",
+    "code": "3019081239626",
+    "capacity": 140,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Petites crevettes roses",
+    "image_url": "crevettes_roses_peche_ocean.jpg",
+    "brand": "Pêche Océan",
+    "category": "Poisson et fruits de mer",
+    "nutritional_score": "C",
+    "code": "3564700618608",
+    "capacity": 125,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Knacki original x6",
+    "image_url": "knacki_original_6.jpg",
+    "brand": "Herta",
+    "category": "Viandes",
+    "nutritional_score": "E",
+    "code": "3154230801313",
+    "capacity": 210,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Jambon blanc Le Supérieur -25% de Sel",
+    "image_url": "jambon_blanc_le_superieur_fleury_michon.jpg",
+    "brand": "Fleury Michon",
+    "category": "Viandes",
+    "nutritional_score": "C",
+    "code": "3302740047404",
+    "capacity": 140,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Tofu nature",
+    "image_url": "tofu_nature_soy.jpg",
+    "brand": "Soy",
+    "category": "Légumes",
+    "nutritional_score": "A",
+    "code": "3259011027958",
+    "capacity": 500,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Petits pois carottes en conserve",
+    "image_url": "petits_pois_carottes_bonduelle.jpg",
+    "brand": "Bonduelle",
+    "category": "Légumes",
+    "nutritional_score": "A",
+    "code": "3083681128512",
+    "capacity": 800,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Haricots verts très fins surgelés",
+    "image_url": "haricots_verts_tres_fins_surgeles_picard.jpg",
+    "brand": "Picard",
+    "category": "Légumes",
+    "nutritional_score": "A",
+    "code": "3270160879588",
+    "capacity": 1,
+    "capacity_unit": "Kg"
+  },
+  {
+    "name": "Carambar Atomic",
+    "image_url": "carambar_atomic.jpg",
+    "brand": "Carambar",
+    "category": "Snacks et desserts",
+    "nutritional_score": "E",
+    "code": "3664346301039",
+    "capacity": 220,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Les Récoltes Gourmandes - Boulgour et légumes",
+    "image_url": "recoltes_gourmandes_boulgour_legumes_findus.jpg",
+    "brand": "Findus",
+    "category": "Légumes",
+    "nutritional_score": "B",
+    "code": "3599741007111",
+    "capacity": 400,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Tomates pelées en conserve",
+    "image_url": "tomates_pelées_mutti.jpg",
+    "brand": "Mutti",
+    "category": "Légumes",
+    "nutritional_score": "A",
+    "code": "8005110002960",
+    "capacity": 400,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Barre de céréales Grany 5 chocolat",
+    "image_url": "barre_cereales_grany_5_chocolat.jpg",
+    "brand": "Lu",
+    "category": "Snacks et desserts",
+    "nutritional_score": "E",
+    "code": "3392460511200",
+    "capacity": 125,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Pâte à tartiner chocolat noisette",
+    "image_url": "nutella_1kg.jpg",
+    "brand": "Nutella",
+    "category": "Snacks et desserts",
+    "nutritional_score": "E",
+    "code": "3017620425035",
+    "capacity": 1,
+    "capacity_unit": "Kg"
+  },
+  {
+    "name": "Café moulu",
+    "image_url": "cafe_moulu_carte_noire.jpg",
+    "brand": "Carte Noire",
+    "category": "Boissons",
+    "nutritional_score": "B",
+    "code": "8000070037557",
+    "capacity": 250,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Thé vert menthe",
+    "image_url": "the_vert_menthe_lipton.jpg",
+    "brand": "Lipton",
+    "category": "Boissons",
+    "nutritional_score": "B",
+    "code": "8720608026548",
+    "capacity": 48,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Jus de pomme Innocent",
+    "image_url": "jus_pomme_innocent.jpg",
+    "brand": "Innocent",
+    "category": "Boissons",
+    "nutritional_score": "E",
+    "code": "5038862164504",
+    "capacity": 900,
+    "capacity_unit": "mL"
+  },
+  {
+    "name": "Sauce tomate provencale",
+    "image_url": "sauce_tomate_panzani.jpg",
+    "brand": "Panzani",
+    "category": "Huiles et condiments",
+    "nutritional_score": "A",
+    "code": "3038359011450",
+    "capacity": 425,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Cornichons Croq'Vert Extra-Fins",
+    "image_url": "cornichons_croq_vert_extra_fins_amora.jpg",
+    "brand": "Amora",
+    "category": "Huiles et condiments",
+    "nutritional_score": "C",
+    "code": "8711200460786",
+    "capacity": 370,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Mozzarella",
+    "image_url": "mozzarella_galbani.jpg",
+    "brand": "Galbani",
+    "category": "Produits laitiers",
+    "nutritional_score": "C",
+    "code": "8000430136319",
+    "capacity": 125,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Fromage extra râpé fin",
+    "image_url": "fromage_rape_extra_fin_entremont.jpg",
+    "brand": "EntreMont",
+    "category": "Produits laitiers",
+    "nutritional_score": "C",
+    "code": "3123930710737",
+    "capacity": 210,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Pâtes penne Rigate",
+    "image_url": "pates_penne_rigate_rummo.jpg",
+    "brand": "Rummo",
+    "category": "Céréales et pâtes",
+    "nutritional_score": "A",
+    "code": "8008343200660",
+    "capacity": 500,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "La paille d'or aux framboises",
+    "image_url": "paille_dor_framboise.png",
+    "brand": "Lu",
+    "category": "Snacks et desserts",
+    "nutritional_score": "E",
+    "code": "7622210422163",
+    "capacity": 170,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Ferrero Rocher",
+    "image_url": "ferrero_rocher.jpg",
+    "brand": "Ferrero Rocher",
+    "category": "Snacks et desserts",
+    "nutritional_score": "E",
+    "code": "8000500003787",
+    "capacity": 200,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Panés de cabillaud 100% filet",
+    "image_url": "cabillaud_findus.jpg",
+    "brand": "Findus",
+    "category": "Poisson et fruits de mer",
+    "nutritional_score": "A",
+    "code": "3599741004394",
+    "capacity": 800,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Steak haché authentique 10% MG",
+    "image_url": "steak_hache_authentique_10_charal.jpg",
+    "brand": "Charal",
+    "category": "Viandes",
+    "nutritional_score": "C",
+    "code": "3181232519137",
+    "capacity": 1,
+    "capacity_unit": "Kg"
+  },
+  {
+    "name": "Blanc de poulet x4 tranches",
+    "image_url": "blanc_poulet_herta_4.jpg",
+    "brand": "Herta",
+    "category": "Viandes",
+    "nutritional_score": "E",
+    "code": "3154230800965",
+    "capacity": 140,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "15 Falafels Soy",
+    "image_url": "15_falafels_soy.jpg",
+    "brand": "Soy",
+    "category": "Légumes",
+    "nutritional_score": "A",
+    "code": "3259011169436",
+    "capacity": 250,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Céleri rémoulade à la moutarde à l'ancienne",
+    "image_url": "celeri_remoulade_moutarde_ancienne_pierre_martinet.jpg",
+    "brand": "Pierre Martinet",
+    "category": "Légumes",
+    "nutritional_score": "A",
+    "code": "3281780064209",
+    "capacity": 300,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Tortellini ricotta & épinards",
+    "image_url": "tortellini_ricotta_epinards_giovanni_rana.jpg",
+    "brand": "Giovanni Rana",
+    "category": "Céréales et pâtes",
+    "nutritional_score": "B",
+    "code": "8001665714372",
+    "capacity": 250,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Lentilles vertes",
+    "image_url": "lentilles_vertes_sabarot.jpg",
+    "brand": "Sabarot",
+    "category": "Légumes",
+    "nutritional_score": "A",
+    "code": "3111950001454",
+    "capacity": 1,
+    "capacity_unit": "Kg"
+  },
+  {
+    "name": "Raisins secs noirs",
+    "image_url": "raisins_secs_noirs_seeberger.jpg",
+    "brand": "Seeberger",
+    "category": "Fruits",
+    "nutritional_score": "D",
+    "code": "4008258161043",
+    "capacity": 200,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Poires Williams St Mamet",
+    "image_url": "poires_williams_st_mamet.jpg",
+    "brand": "St Mamet",
+    "category": "Fruits",
+    "nutritional_score": "A",
+    "code": "3080920100261",
+    "capacity": 850,
+    "capacity_unit": "g"
+  },
+  {
+    "name": "Eau minérale gazeuse San Pellegrino",
+    "image_url": "eau_minerale_gazeuse_san_pellegrino.jpg",
+    "brand": "San Pellegrino",
+    "category": "Boissons",
+    "nutritional_score": "A",
+    "code": "8002270011054",
+    "capacity": 750,
+    "capacity_unit": "mL"
+  },
+  {
+    "name": "Indian tonic Schweppes",
+    "image_url": "indian_tonix_schweppes.jpg",
+    "brand": "Schweppes",
+    "category": "Boissons",
+    "nutritional_score": "D",
+    "code": "3124480196361",
+    "capacity": 1.5,
+    "capacity_unit": "L"
+  }
+]
