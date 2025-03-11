@@ -28,6 +28,9 @@ type JwtUser = {
   type: "user" | "customer" | "admin";
 };
 
+const nameRegex = /^[a-zA-Z0-9]{3,30}$/;
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
 fastify.register(jwt, {
   secret: process.env.JWT_SECRET as string,
 });
@@ -43,40 +46,49 @@ fastify.decorate(
   },
 );
 
-fastify.get("/users", async (request, reply) => {
-  try {
-    const users = await prisma.user.findMany();
-    return users;
-  } catch (err) {
-    fastify.log.error(err);
-    reply.status(500).send({ error: "Failed to fetch users" });
-  }
-});
-
-fastify.post(
-  "/register",
+fastify.get(
+  "/users",
   {
     schema: {
-      body: {
-        type: "object",
-        required: ["name", "email", "password", "type"],
-        properties: {
-          name: { type: "string", pattern: "^[a-zA-Z0-9]{3,30}$" },
-          email: { type: "string", format: "email" },
-          password: {
-            type: "string",
-            pattern: "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
+      response: {
+        200: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              id: { type: "string" },
+              name: { type: "string" },
+              email: { type: "string" },
+              password: { type: "string" },
+            },
           },
-          type: { type: "string", enum: ["user", "customer"] },
+        },
+        500: {
+          type: "object",
+          properties: {
+            error: { type: "string" },
+          },
+          required: ["error"],
         },
       },
     },
   },
   async (request, reply) => {
-    const { name, email, password, type } = request.body as RegisterRequest;
+    try {
+      const users = await prisma.user.findMany();
+      return users;
+    } catch (err) {
+      fastify.log.error(err);
+      reply.status(500).send({ error: "Failed to fetch users" });
+    }
+  },
+);
 
-    const nameRegex = /^[a-zA-Z0-9]{3,30}$/;
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+fastify.post(
+  "/register",
+
+  async (request, reply) => {
+    const { name, email, password, type } = request.body as RegisterRequest;
 
     if (!nameRegex.test(name)) {
       return reply.status(400).send({ error: "Invalid name format" });
@@ -105,7 +117,15 @@ fastify.post(
           return reply.status(400).send({ error: "Email already in use" });
         }
         newUser = await prisma.customer.create({
-          data: { name, email, password: hashedPassword },
+          data: {
+            name,
+            email,
+            password: hashedPassword,
+            address: "",
+            zipcode: "",
+            city: "",
+            country: "",
+          },
         });
       } else {
         return reply.status(400).send({ error: "Invalid type" });
@@ -155,7 +175,6 @@ fastify.get(
   async (request, reply) => {
     try {
       const user = request.user as JwtUser;
-      console.log(user);
 
       if (!user?.type) {
         return reply.status(400).send({ error: "Invalid token data" });
@@ -186,6 +205,87 @@ fastify.get(
     } catch (err) {
       fastify.log.error(err);
       return reply.status(500).send({ error: "Failed to fetch user info" });
+    }
+  },
+);
+
+fastify.put(
+  "/user/update",
+  { preValidation: [fastify.authenticate] },
+  async (request, reply) => {
+    const user = request.user as JwtUser;
+    const { name, currentPassword, newPassword } = request.body as {
+      name?: string;
+      currentPassword?: string;
+      newPassword?: string;
+    };
+
+    if (user.type === "admin") {
+      return reply
+        .status(403)
+        .send({ error: "Admin users cannot be modified." });
+    }
+
+    if (!name && (!currentPassword || !newPassword)) {
+      return reply.status(400).send({
+        error: "Provide a name or both current and new passwords to update.",
+      });
+    }
+
+    try {
+      let userData =
+        user.type === "user"
+          ? await prisma.user.findUnique({ where: { id: user.id } })
+          : await prisma.customer.findUnique({ where: { id: user.id } });
+
+      if (!userData) {
+        return reply.status(404).send({ error: "User not found" });
+      }
+
+      let updatedData: Record<string, any> = {};
+
+      if (name) {
+        if (!nameRegex.test(name)) {
+          return reply.status(400).send({ error: "Invalid name format" });
+        }
+        updatedData.name = name;
+      }
+
+      if (currentPassword && newPassword) {
+        if (!passwordRegex.test(newPassword)) {
+          return reply
+            .status(400)
+            .send({ error: "Invalid new password format" });
+        }
+
+        const passwordMatch = await bcrypt.compare(
+          currentPassword,
+          userData.password,
+        );
+        if (!passwordMatch) {
+          return reply
+            .status(401)
+            .send({ error: "Incorrect current password" });
+        }
+
+        updatedData.password = await bcrypt.hash(newPassword, 10);
+      }
+
+      const updatedUser =
+        user.type === "user"
+          ? await prisma.user.update({
+              where: { id: user.id },
+              data: updatedData,
+            })
+          : await prisma.customer.update({
+              where: { id: user.id },
+              data: updatedData,
+            });
+
+      return reply.send({ user: updatedUser });
+    } catch (err) {
+      fastify.log.error(err);
+      return reply.status(500).send({ error: "Failed to update user" });
     }
   },
 );
