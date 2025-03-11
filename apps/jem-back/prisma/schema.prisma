@@ -13,10 +13,10 @@ model Customer {
   email            String  @unique
   name             String
   password         String
-  address          String
-  zipcode          String
-  city             String
-  country          String
+  address          String?
+  zipcode          String?
+  city             String?
+  country          String?
 }
 
 model User {
