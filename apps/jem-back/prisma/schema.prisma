@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  // url      = "postgresql://postgres:postgres@localhost:5432/mydb"
+  //url      = "postgresql://postgres:postgres@localhost:5432/mydb"
   url      = env("DATABASE_URL")
 }
 
@@ -13,6 +13,10 @@ model Customer {
   email            String  @unique
   name             String
   password         String
+  address          String
+  zipcode          String
+  city             String
+  country          String
 }
 
 model User {
