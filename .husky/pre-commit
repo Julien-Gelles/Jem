@@ -1,13 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# Get a list of currently staged files
-STAGED_FILES=$(git diff --name-only --cached)
-
-# Run Prettier on all files (including unstaged ones)
+npm run lint
 npm run format
-
-# Re-add only previously staged files (if modified by Prettier)
-echo "$STAGED_FILES" | xargs git add
-
-# Allow the commit to proceed
