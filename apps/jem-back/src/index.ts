@@ -84,6 +84,61 @@ fastify.get(
   },
 );
 
+fastify.get(
+  "/customers",
+  {
+    schema: {
+      response: {
+        200: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              id: { type: "string" },
+              name: { type: "string" },
+              email: { type: "string" },
+              password: { type: "string" },
+              address: { type: "string" },
+              zipcode: { type: "string" },
+              city: { type: "string" },
+              country: { type: "string" },
+            },
+          },
+        },
+        500: {
+          type: "object",
+          properties: {
+            error: { type: "string" },
+          },
+            },
+          },
+        },
+        500: {
+          type: "object",
+          properties: {
+            error: { type: "string" },
+          },
+          required: ["error"],
+        },
+      },
+    },
+  },
+  async (request, reply) => {
+    try {
+      const customers = await prisma.customer.findMany();
+      return customers;
+    } catch (err) {
+      fastify.log.error(err);
+      reply.status(500).send({ error: "Failed to fetch customers" });
+      const users = await prisma.user.findMany();
+      return users;
+    } catch (err) {
+      fastify.log.error(err);
+      reply.status(500).send({ error: "Failed to fetch users" });
+    }
+  },
+);
+
 fastify.post(
   "/register",
 
