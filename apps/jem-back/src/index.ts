@@ -28,6 +28,16 @@ type JwtUser = {
   type: "user" | "customer" | "admin";
 };
 
+type UpdateRequest = {
+  name?: string;
+  currentPassword?: string;
+  newPassword?: string;
+  address?: string;
+  zipcode?: string;
+  city?: string;
+  country?: string;
+};
+
 const nameRegex = /^[a-zA-Z0-9]{3,30}$/;
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
@@ -256,11 +266,15 @@ fastify.put(
   { preValidation: [fastify.authenticate] },
   async (request, reply) => {
     const user = request.user as JwtUser;
-    const { name, currentPassword, newPassword } = request.body as {
-      name?: string;
-      currentPassword?: string;
-      newPassword?: string;
-    };
+    const {
+      name,
+      currentPassword,
+      newPassword,
+      address,
+      zipcode,
+      city,
+      country,
+    } = request.body as UpdateRequest;
 
     if (user.type === "admin") {
       return reply
@@ -311,6 +325,13 @@ fastify.put(
         }
 
         updatedData.password = await bcrypt.hash(newPassword, 10);
+      }
+
+      if (user.type === "customer") {
+        if (address) updatedData.address = address;
+        if (zipcode) updatedData.zipcode = zipcode;
+        if (city) updatedData.city = city;
+        if (country) updatedData.country = country;
       }
 
       const updatedUser =
