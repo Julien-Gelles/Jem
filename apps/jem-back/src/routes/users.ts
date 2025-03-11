@@ -27,7 +27,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
       } catch (err) {
         reply.status(401).send({ error: "Unauthorized" });
       }
-    },
+    }
   );
 
   fastify.get(
@@ -65,7 +65,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Failed to fetch users" });
       }
-    },
+    }
   );
 
   fastify.get(
@@ -107,7 +107,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Failed to fetch customers" });
       }
-    },
+    }
   );
 
   fastify.get(
@@ -145,7 +145,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Failed to fetch customers" });
       }
-    },
+    }
   );
 
   fastify.post(
@@ -242,38 +242,83 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Failed to register" });
       }
-    },
+    }
   );
 
-  fastify.post("/login", async (request, reply) => {
-    const { email, password, type } = request.body as LoginRequest;
+  fastify.post(
+    "/login",
+    {
+      schema: {
+        body: {
+          type: "object",
+          required: ["email", "password", "type"],
+          properties: {
+            email: { type: "string", format: "email" },
+            password: { type: "string" },
+            type: { type: "string", enum: ["user", "customer", "admin"] },
+          },
+        },
+        response: {
+          200: {
+            type: "object",
+            properties: {
+              token: { type: "string" },
+            },
+          },
+          400: {
+            type: "object",
+            properties: {
+              error: { type: "string" },
+            },
+            required: ["error"],
+          },
+          401: {
+            type: "object",
+            properties: {
+              error: { type: "string" },
+            },
+            required: ["error"],
+          },
+          500: {
+            type: "object",
+            properties: {
+              error: { type: "string" },
+            },
+            required: ["error"],
+          },
+        },
+      },
+    },
+    async (request, reply) => {
+      const { email, password, type } = request.body as LoginRequest;
 
-    if (!["user", "customer", "admin"].includes(type)) {
-      return reply.status(400).send({ error: "Invalid type" });
-    }
-
-    try {
-      const user = await (type === "user"
-        ? prisma.user.findUnique({ where: { email } })
-        : type === "customer"
-          ? prisma.customer.findUnique({ where: { email } })
-          : prisma.admin.findUnique({ where: { email } }));
-
-      if (!user || !(await bcrypt.compare(password, user.password))) {
-        return reply.status(401).send({ error: "Invalid email or password" });
+      if (!["user", "customer", "admin"].includes(type)) {
+        return reply.status(400).send({ error: "Invalid type" });
       }
 
-      const token = fastify.jwt.sign(
-        { id: user.id, email: user.email, type: type },
-        { expiresIn: "1h" },
-      );
+      try {
+        const user = await (type === "user"
+          ? prisma.user.findUnique({ where: { email } })
+          : type === "customer"
+            ? prisma.customer.findUnique({ where: { email } })
+            : prisma.admin.findUnique({ where: { email } }));
 
-      return reply.send({ token });
-    } catch (err) {
-      fastify.log.error(err);
-      reply.status(500).send({ error: "Login failed" });
+        if (!user || !(await bcrypt.compare(password, user.password))) {
+          return reply.status(401).send({ error: "Invalid email or password" });
+        }
+
+        const token = fastify.jwt.sign(
+          { id: user.id, email: user.email, type: type },
+          { expiresIn: "1h" }
+        );
+
+        return reply.send({ token });
+      } catch (err) {
+        fastify.log.error(err);
+        reply.status(500).send({ error: "Login failed" });
+      }
     }
-  });
+  );
 
   fastify.get(
     "/user",
@@ -312,12 +357,85 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         return reply.status(500).send({ error: "Failed to fetch user info" });
       }
-    },
+    }
   );
 
   fastify.put(
     "/user/update",
-    { preValidation: [fastify.authenticate] },
+    {
+      preValidation: [fastify.authenticate],
+      schema: {
+        body: {
+          type: "object",
+          properties: {
+            name: { type: "string" },
+            currentPassword: { type: "string" },
+            newPassword: { type: "string" },
+            address: { type: "string" },
+            zipcode: { type: "string" },
+            city: { type: "string" },
+            country: { type: "string" },
+          },
+          required: [],
+        },
+        response: {
+          200: {
+            type: "object",
+            properties: {
+              user: {
+                type: "object",
+                properties: {
+                  id: { type: "string" },
+                  name: { type: "string" },
+                  email: { type: "string" },
+                  password: { type: "string" },
+                  address: { type: "string", nullable: true },
+                  zipcode: { type: "string", nullable: true },
+                  city: { type: "string", nullable: true },
+                  country: { type: "string", nullable: true },
+                },
+              },
+            },
+          },
+          400: {
+            type: "object",
+            properties: {
+              error: { type: "string" },
+            },
+            required: ["error"],
+          },
+          401: {
+            type: "object",
+            properties: {
+              error: { type: "string" },
+            },
+            required: ["error"],
+          },
+          403: {
+            type: "object",
+            properties: {
+              error: { type: "string" },
+            },
+            required: ["error"],
+          },
+          404: {
+            type: "object",
+            properties: {
+              error: { type: "string" },
+            },
+            required: ["error"],
+          },
+          500: {
+            type: "object",
+            properties: {
+              error: { type: "string" },
+            },
+            required: ["error"],
+          },
+        },
+      },
+    },
+
     async (request, reply) => {
       const user = request.user as JwtUser;
       const {
@@ -370,7 +488,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
 
           const passwordMatch = await bcrypt.compare(
             currentPassword,
-            userData.password,
+            userData.password
           );
           if (!passwordMatch) {
             return reply
@@ -404,6 +522,6 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         return reply.status(500).send({ error: "Failed to update user" });
       }
-    },
+    }
   );
 }
