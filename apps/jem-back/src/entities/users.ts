@@ -25,4 +25,7 @@ export type UpdateRequest = {
   zipcode?: string;
   city?: string;
   country?: string;
+  firstname?: string;
+  lastname?: string;
+  phonenumber?: string;
 };

@@ -17,6 +17,9 @@ model Customer {
   zipcode          String?
   city             String?
   country          String?
+  firstname        String?
+  lastname         String?
+  phonenumber      String?
 }
 
 model User {
@@ -24,6 +27,7 @@ model User {
   email            String  @unique
   name             String
   password         String
+
 }
 
 model Admin {

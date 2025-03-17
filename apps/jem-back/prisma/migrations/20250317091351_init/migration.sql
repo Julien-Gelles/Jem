@@ -8,6 +8,9 @@ CREATE TABLE "Customer" (
     "zipcode" TEXT,
     "city" TEXT,
     "country" TEXT,
+    "firstname" TEXT,
+    "lastname" TEXT,
+    "phonenumber" TEXT,
 
     CONSTRAINT "Customer_pkey" PRIMARY KEY ("id")
 );

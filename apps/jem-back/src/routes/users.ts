@@ -27,7 +27,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
       } catch (err) {
         reply.status(401).send({ error: "Unauthorized" });
       }
-    },
+    }
   );
 
   fastify.get(
@@ -65,40 +65,12 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Failed to fetch users" });
       }
-    },
+    }
   );
 
   fastify.get(
     "/customers",
-    {
-      schema: {
-        response: {
-          200: {
-            type: "array",
-            items: {
-              type: "object",
-              properties: {
-                id: { type: "string" },
-                name: { type: "string" },
-                email: { type: "string" },
-                password: { type: "string" },
-                address: { type: "string" },
-                zipcode: { type: "string" },
-                city: { type: "string" },
-                country: { type: "string" },
-              },
-            },
-          },
-          500: {
-            type: "object",
-            properties: {
-              error: { type: "string" },
-            },
-            required: ["error"],
-          },
-        },
-      },
-    },
+
     async (request, reply) => {
       try {
         const customers = await prisma.customer.findMany();
@@ -107,7 +79,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Failed to fetch customers" });
       }
-    },
+    }
   );
 
   fastify.get(
@@ -145,7 +117,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Failed to fetch customers" });
       }
-    },
+    }
   );
 
   fastify.post(
@@ -174,6 +146,9 @@ export async function usersRoutes(fastify: FastifyInstance) {
               zipcode: { type: "string", nullable: true },
               city: { type: "string", nullable: true },
               country: { type: "string", nullable: true },
+              firstname: { type: "string", nullable: true },
+              lastname: { type: "string", nullable: true },
+              phonenumber: { type: "string", nullable: true },
             },
           },
           400: {
@@ -231,6 +206,9 @@ export async function usersRoutes(fastify: FastifyInstance) {
               zipcode: "",
               city: "",
               country: "",
+              firstname: "",
+              lastname: "",
+              phonenumber: "",
             },
           });
         } else {
@@ -242,7 +220,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Failed to register" });
       }
-    },
+    }
   );
 
   fastify.post(
@@ -309,7 +287,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
 
         const token = fastify.jwt.sign(
           { id: user.id, email: user.email, type: type },
-          { expiresIn: "1h" },
+          { expiresIn: "1h" }
         );
 
         return reply.send({ token });
@@ -317,7 +295,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Login failed" });
       }
-    },
+    }
   );
 
   fastify.get(
@@ -357,7 +335,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         return reply.status(500).send({ error: "Failed to fetch user info" });
       }
-    },
+    }
   );
 
   fastify.put(
@@ -375,6 +353,9 @@ export async function usersRoutes(fastify: FastifyInstance) {
             zipcode: { type: "string" },
             city: { type: "string" },
             country: { type: "string" },
+            firstname: { type: "string" },
+            lastname: { type: "string" },
+            phonenumber: { type: "string" },
           },
           required: [],
         },
@@ -393,6 +374,9 @@ export async function usersRoutes(fastify: FastifyInstance) {
                   zipcode: { type: "string", nullable: true },
                   city: { type: "string", nullable: true },
                   country: { type: "string", nullable: true },
+                  firstname: { type: "string", nullable: true },
+                  lastname: { type: "string", nullable: true },
+                  phonenumber: { type: "string", nullable: true },
                 },
               },
             },
@@ -446,18 +430,15 @@ export async function usersRoutes(fastify: FastifyInstance) {
         zipcode,
         city,
         country,
+        firstname,
+        lastname,
+        phonenumber,
       } = request.body as UpdateRequest;
 
       if (user.type === "admin") {
         return reply
           .status(403)
           .send({ error: "Admin users cannot be modified." });
-      }
-
-      if (!name && (!currentPassword || !newPassword)) {
-        return reply.status(400).send({
-          error: "Provide a name or both current and new passwords to update.",
-        });
       }
 
       try {
@@ -488,7 +469,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
 
           const passwordMatch = await bcrypt.compare(
             currentPassword,
-            userData.password,
+            userData.password
           );
           if (!passwordMatch) {
             return reply
@@ -504,6 +485,9 @@ export async function usersRoutes(fastify: FastifyInstance) {
           if (zipcode) updatedData.zipcode = zipcode;
           if (city) updatedData.city = city;
           if (country) updatedData.country = country;
+          if (firstname) updatedData.firstname = firstname;
+          if (lastname) updatedData.lastname = lastname;
+          if (phonenumber) updatedData.phonenumber = phonenumber;
         }
 
         const updatedUser =
@@ -522,6 +506,6 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         return reply.status(500).send({ error: "Failed to update user" });
       }
-    },
+    }
   );
 }
