@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "@eslint/js": "^9.21.0",
+    "@fastify/cors": "^11.0.0",
     "@fastify/swagger": "^9.4.2",
     "@fastify/swagger-ui": "^5.2.1",
     "@prisma/client": "^6.3.1",

@@ -1,10 +1,16 @@
 import Fastify from "fastify";
 import dotenv from "dotenv";
+import fastifyCors from "@fastify/cors";
 import { setupSwagger } from "./config/swagger";
 import { usersRoutes } from "./routes/users";
 dotenv.config({ path: "../../.env" });
 
 const fastify = Fastify({ logger: true });
+
+fastify.register(fastifyCors, {
+  origin: "*",
+  methods: ["*"],
+});
 
 setupSwagger(fastify);
 
