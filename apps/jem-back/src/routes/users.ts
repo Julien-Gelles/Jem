@@ -27,7 +27,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
       } catch (err) {
         reply.status(401).send({ error: "Unauthorized" });
       }
-    }
+    },
   );
 
   fastify.get(
@@ -65,7 +65,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Failed to fetch users" });
       }
-    }
+    },
   );
 
   fastify.get(
@@ -79,7 +79,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Failed to fetch customers" });
       }
-    }
+    },
   );
 
   fastify.get(
@@ -117,7 +117,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Failed to fetch customers" });
       }
-    }
+    },
   );
 
   fastify.post(
@@ -220,7 +220,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Failed to register" });
       }
-    }
+    },
   );
 
   fastify.post(
@@ -287,7 +287,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
 
         const token = fastify.jwt.sign(
           { id: user.id, email: user.email, type: type },
-          { expiresIn: "1h" }
+          { expiresIn: "1h" },
         );
 
         return reply.send({ token });
@@ -295,7 +295,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         reply.status(500).send({ error: "Login failed" });
       }
-    }
+    },
   );
 
   fastify.get(
@@ -335,7 +335,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         return reply.status(500).send({ error: "Failed to fetch user info" });
       }
-    }
+    },
   );
 
   fastify.put(
@@ -469,7 +469,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
 
           const passwordMatch = await bcrypt.compare(
             currentPassword,
-            userData.password
+            userData.password,
           );
           if (!passwordMatch) {
             return reply
@@ -506,7 +506,7 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         return reply.status(500).send({ error: "Failed to update user" });
       }
-    }
+    },
   );
 
   fastify.delete(
@@ -569,6 +569,6 @@ export async function usersRoutes(fastify: FastifyInstance) {
         fastify.log.error(err);
         return reply.status(500).send({ error: "Failed to delete user" });
       }
-    }
+    },
   );
 }
