@@ -71,7 +71,7 @@ describe("Users Routes", () => {
 
   it("should handle server errors gracefully", async () => {
     (prismaMock.user.findMany as jest.Mock).mockRejectedValue(
-      new Error("Database error")
+      new Error("Database error"),
     );
 
     const response = await request(fastify.server).get("/users");
@@ -90,7 +90,7 @@ describe("Users Routes", () => {
     (prismaMock.user.findUnique as jest.Mock).mockResolvedValue(null);
     (prismaMock.user.create as jest.Mock).mockResolvedValue(newUser);
     (jest.spyOn(bcrypt, "hash") as jest.Mock).mockResolvedValue(
-      "hashedpassword"
+      "hashedpassword",
     );
 
     const response = await request(fastify.server).post("/register").send({
