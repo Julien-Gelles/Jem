@@ -12,3 +12,6 @@ CREATE TABLE "ApiProduct" (
 
     CONSTRAINT "ApiProduct_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ApiProduct_code_key" ON "ApiProduct"("code");

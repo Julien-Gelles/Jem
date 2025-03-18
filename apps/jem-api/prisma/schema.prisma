@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  // url      = "postgresql://postgres:postgres@localhost:5432/mydb"
+  //url      = "postgresql://postgres:postgres@localhost:5432/mydb"
   url      = env("DATABASE_URL")
 }
 
@@ -15,7 +15,7 @@ model ApiProduct {
   brand             String
   category          String
   nutritional_score String
-  code              String
+  code              String @unique
   capacity          Decimal
   capacity_unit     String
 }

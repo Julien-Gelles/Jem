@@ -121,6 +121,61 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
+    }
+  );
+
+  fastify.get(
+    "/product/:code",
+    {
+      schema: {
+        description: "Get a single product by code",
+        tags: ["Products"],
+        params: {
+          type: "object",
+          properties: {
+            code: { type: "string" },
+          },
+          required: ["code"],
+        },
+        response: {
+          200: {
+            type: "object",
+            properties: {
+              id: { type: "number" },
+              name: { type: "string" },
+              image_url: { type: "string" },
+              brand: { type: "string" },
+              category: { type: "string" },
+              nutritional_score: { type: "string" },
+              code: { type: "string" },
+              capacity: { type: "string" },
+              capacity_unit: { type: "string" },
+            },
+          },
+        },
+      },
     },
+    async (request, reply) => {
+      const { code } = request.params as { code: string };
+
+      try {
+        const product = await prisma.apiProduct.findUnique({
+          where: { code },
+        });
+
+        if (!product) {
+          return reply
+            .status(404)
+            .send({ status: 404, message: "Product not found" });
+        }
+
+        return reply.status(200).send(product);
+      } catch (error) {
+        fastify.log.error(error);
+        return reply
+          .status(500)
+          .send({ status: 500, message: "Internal Server Error" });
+      }
+    }
   );
 }
