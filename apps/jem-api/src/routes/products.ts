@@ -121,7 +121,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
-    }
+    },
   );
 
   fastify.get(
@@ -176,6 +176,6 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
-    }
+    },
   );
 }
