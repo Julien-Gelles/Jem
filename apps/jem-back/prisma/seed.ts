@@ -26,6 +26,23 @@ async function main() {
     }
   }
 
+  const customersPath = path.join(__dirname, "data/customers.json");
+  const customers = JSON.parse(fs.readFileSync(customersPath, "utf-8"));
+
+  for (const customer of customers) {
+    const existingCustomer = await prisma.customer.findFirst({
+      where: {
+        email: customer.email,
+      },
+    });
+
+    if (!existingCustomer) {
+      await prisma.customer.create({
+        data: customer,
+      });
+    }
+  }
+
   const productsPath = path.join(__dirname, "data/products.json");
   const products = JSON.parse(fs.readFileSync(productsPath, "utf-8"));
 

@@ -40,9 +40,19 @@ CREATE TABLE "BackProduct" (
     "id" TEXT NOT NULL,
     "productCode" TEXT NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
-    "quantity" INTEGER NOT NULL,
+    "stock" INTEGER NOT NULL,
 
     CONSTRAINT "BackProduct_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Cart" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "products" JSONB NOT NULL,
+    "totalPrice" DOUBLE PRECISION NOT NULL,
+
+    CONSTRAINT "Cart_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -56,3 +66,6 @@ CREATE UNIQUE INDEX "Admin_email_key" ON "Admin"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "BackProduct_productCode_key" ON "BackProduct"("productCode");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Cart_userId_key" ON "Cart"("userId");

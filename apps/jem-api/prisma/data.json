@@ -10,6 +10,16 @@
     "capacity_unit": "L"
   },
   {
+    "name": "Eau de source Cristaline 50cL",
+    "image_url": "cristaline.jpg",
+    "brand": "Cristaline",
+    "category": "Boissons",
+    "nutritional_score": "A",
+    "code": "3268840001008",
+    "capacity": 50,
+    "capacity_unit": "cL"
+  },
+  {
     "name": "Coca Cola zero",
     "image_url": "coca_cola_zero.jpg",
     "brand": "Coca Cola",

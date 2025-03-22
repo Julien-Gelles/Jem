@@ -18,7 +18,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
       } catch (err) {
         reply.status(401).send({ error: "Unauthorized" });
       }
-    },
+    }
   );
 
   fastify.get(
@@ -45,7 +45,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
                 capacity: { type: "string" },
                 capacity_unit: { type: "string" },
                 price: { type: "number" },
-                quantity: { type: "number" },
+                stock: { type: "number" },
               },
             },
           },
@@ -60,26 +60,26 @@ export async function productsRoutes(fastify: FastifyInstance) {
         const productDetailsPromises = backProducts.map(async (product) => {
           try {
             const response = await axios.get(
-              `http://jem_api:3000/product/${product.productCode}`,
+              `http://jem_api:3000/product/${product.productCode}`
             );
 
             if (response.data && response.status === 200) {
               return {
                 ...response.data,
                 price: product.price,
-                quantity: product.quantity,
+                stock: product.stock,
               };
             }
           } catch (error) {
             fastify.log.error(
-              `Failed to fetch product details for ${product.productCode}: ${error}`,
+              `Failed to fetch product details for ${product.productCode}: ${error}`
             );
           }
           return null;
         });
 
         const products = (await Promise.all(productDetailsPromises)).filter(
-          (product) => product !== null,
+          (product) => product !== null
         );
 
         return reply.status(200).send(products);
@@ -89,7 +89,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
-    },
+    }
   );
 
   fastify.get(
@@ -121,7 +121,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
               capacity: { type: "string" },
               capacity_unit: { type: "string" },
               price: { type: "number" },
-              quantity: { type: "number" },
+              stock: { type: "number" },
             },
           },
         },
@@ -144,14 +144,14 @@ export async function productsRoutes(fastify: FastifyInstance) {
 
         try {
           const response = await axios.get(
-            `http://jem_api:3000/product/${backProduct.productCode}`,
+            `http://jem_api:3000/product/${backProduct.productCode}`
           );
 
           if (response.data && response.status === 200) {
             const productDetails = {
               ...response.data,
               price: backProduct.price,
-              quantity: backProduct.quantity,
+              stock: backProduct.stock,
             };
             return reply.status(200).send(productDetails);
           } else {
@@ -161,7 +161,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           }
         } catch (error) {
           fastify.log.error(
-            `Failed to fetch product details for ${backProduct.productCode}: ${error}`,
+            `Failed to fetch product details for ${backProduct.productCode}: ${error}`
           );
           return reply
             .status(500)
@@ -173,7 +173,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
-    },
+    }
   );
 
   fastify.post(
@@ -185,11 +185,11 @@ export async function productsRoutes(fastify: FastifyInstance) {
         summary: "Create back product",
         body: {
           type: "object",
-          required: ["productCode", "price", "quantity"],
+          required: ["productCode", "price", "stock"],
           properties: {
             productCode: { type: "string" },
             price: { type: "number" },
-            quantity: { type: "number" },
+            stock: { type: "number" },
           },
         },
         response: {
@@ -199,7 +199,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
               id: { type: "string" },
               productCode: { type: "string" },
               price: { type: "number" },
-              quantity: { type: "number" },
+              stock: { type: "number" },
             },
           },
         },
@@ -207,10 +207,10 @@ export async function productsRoutes(fastify: FastifyInstance) {
       preValidation: [fastify.authenticate],
     },
     async (request, reply) => {
-      const { productCode, price, quantity } = request.body as {
+      const { productCode, price, stock } = request.body as {
         productCode: string;
         price: number;
-        quantity: number;
+        stock: number;
       };
 
       try {
@@ -218,7 +218,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           data: {
             productCode,
             price,
-            quantity,
+            stock,
           },
         });
         return reply.status(201).send(newProduct);
@@ -228,7 +228,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
-    },
+    }
   );
 
   fastify.put(
@@ -242,7 +242,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           type: "object",
           properties: {
             price: { type: "number" },
-            quantity: { type: "number" },
+            stock: { type: "number" },
           },
         },
         response: {
@@ -252,7 +252,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
               id: { type: "string" },
               productCode: { type: "string" },
               price: { type: "number" },
-              quantity: { type: "number" },
+              stock: { type: "number" },
             },
           },
         },
@@ -261,9 +261,9 @@ export async function productsRoutes(fastify: FastifyInstance) {
     },
     async (request, reply) => {
       const { code } = request.params as { code: string };
-      const { price, quantity } = request.body as {
+      const { price, stock } = request.body as {
         price?: number;
-        quantity?: number;
+        stock?: number;
       };
 
       try {
@@ -271,7 +271,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           where: { productCode: code },
           data: {
             ...(price !== undefined && { price }),
-            ...(quantity !== undefined && { quantity }),
+            ...(stock !== undefined && { stock }),
           },
         });
         return reply.status(200).send(updatedProduct);
@@ -281,7 +281,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
-    },
+    }
   );
 
   fastify.delete(
@@ -327,6 +327,6 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
-    },
+    }
   );
 }

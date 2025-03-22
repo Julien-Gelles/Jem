@@ -4,6 +4,7 @@ import fastifyCors from "@fastify/cors";
 import { setupSwagger } from "./config/swagger";
 import { usersRoutes } from "./routes/users";
 import { productsRoutes } from "./routes/products";
+import { cartsRoutes } from "./routes/cart";
 
 dotenv.config({ path: "../../.env" });
 
@@ -19,6 +20,7 @@ fastify.register(fastifyCors, {
 setupSwagger(fastify);
 fastify.register(usersRoutes);
 fastify.register(productsRoutes);
+fastify.register(cartsRoutes);
 
 const start = async () => {
   try {

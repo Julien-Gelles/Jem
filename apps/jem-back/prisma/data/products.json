@@ -2,11 +2,16 @@
   {
     "productCode": "3274080005003",
     "price": 2.99,
-    "quantity": 50
+    "stock": 50
   },
   {
     "productCode": "5449000133335",
     "price": 1.49,
-    "quantity": 30
+    "stock": 30
+  },
+  {
+    "productCode": "3268840001008",
+    "price": 0.5,
+    "stock": 20
   }
 ]

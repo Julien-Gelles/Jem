@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  //url      = "postgresql://postgres:postgres@localhost:5432/mydb"
+  // url      = "postgresql://postgres:postgres@localhost:5432/mydb"
   url      = env("DATABASE_URL")
 }
 
@@ -40,5 +40,12 @@ model BackProduct {
   id               String  @id @default(uuid())
   productCode      String  @unique
   price            Float
-  quantity         Int
+  stock            Int
+}
+
+model Cart {
+  id         String  @id @default(uuid())
+  userId     String  @unique
+  products   Json
+  totalPrice Float
 }
