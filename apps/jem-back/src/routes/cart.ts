@@ -20,7 +20,7 @@ export async function cartsRoutes(fastify: FastifyInstance) {
       } catch (err) {
         reply.status(401).send({ error: "Unauthorized" });
       }
-    }
+    },
   );
 
   fastify.get(
@@ -51,13 +51,13 @@ export async function cartsRoutes(fastify: FastifyInstance) {
               headers: {
                 Authorization: `${request.headers.authorization}`,
               },
-            }
+            },
           );
           return {
             ...response.data,
             quantity: product.quantity,
           };
-        })
+        }),
       );
 
       return reply.send({
@@ -66,7 +66,7 @@ export async function cartsRoutes(fastify: FastifyInstance) {
         totalPrice: cart.totalPrice,
         products,
       });
-    }
+    },
   );
 
   fastify.post(
@@ -94,7 +94,7 @@ export async function cartsRoutes(fastify: FastifyInstance) {
       }
 
       const productIndex = cart.products.findIndex(
-        (p: CartProduct) => p.code === code
+        (p: CartProduct) => p.code === code,
       );
 
       if (productIndex > -1) {
@@ -109,7 +109,7 @@ export async function cartsRoutes(fastify: FastifyInstance) {
           headers: {
             Authorization: `${request.headers.authorization}`,
           },
-        }
+        },
       );
       const productPrice = productResponse.data.price;
       cart.totalPrice += productPrice * quantity;
@@ -123,7 +123,7 @@ export async function cartsRoutes(fastify: FastifyInstance) {
       });
 
       return reply.send({ message: "Product added to cart" });
-    }
+    },
   );
 
   fastify.put(
@@ -145,7 +145,7 @@ export async function cartsRoutes(fastify: FastifyInstance) {
       }
 
       const productIndex = cart.products.findIndex(
-        (p: CartProduct) => p.code === code
+        (p: CartProduct) => p.code === code,
       );
 
       if (productIndex > -1) {
@@ -163,7 +163,7 @@ export async function cartsRoutes(fastify: FastifyInstance) {
           headers: {
             Authorization: `Bearer ${request.headers.authorization?.split(" ")[1]}`,
           },
-        }
+        },
       );
       const productPrice = productResponse.data.price;
       cart.totalPrice -= productPrice * quantity;
@@ -177,7 +177,7 @@ export async function cartsRoutes(fastify: FastifyInstance) {
       });
 
       return reply.send({ message: "Product quantity updated in cart" });
-    }
+    },
   );
 
   fastify.delete(
@@ -199,7 +199,7 @@ export async function cartsRoutes(fastify: FastifyInstance) {
       }
 
       const productIndex = cart.products.findIndex(
-        (p: CartProduct) => p.code === code
+        (p: CartProduct) => p.code === code,
       );
 
       if (productIndex > -1) {
@@ -217,7 +217,7 @@ export async function cartsRoutes(fastify: FastifyInstance) {
           headers: {
             Authorization: `${request.headers.authorization}`,
           },
-        }
+        },
       );
       const productPrice = productResponse.data.price;
       cart.totalPrice -= productPrice * quantity;
@@ -234,7 +234,7 @@ export async function cartsRoutes(fastify: FastifyInstance) {
       });
 
       return reply.send({ message: "Product quantity removed from cart" });
-    }
+    },
   );
 
   fastify.delete(
@@ -256,6 +256,6 @@ export async function cartsRoutes(fastify: FastifyInstance) {
       });
 
       return reply.send({ message: "Cart deleted successfully" });
-    }
+    },
   );
 }
