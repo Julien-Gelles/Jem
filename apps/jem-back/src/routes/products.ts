@@ -18,7 +18,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
       } catch (err) {
         reply.status(401).send({ error: "Unauthorized" });
       }
-    }
+    },
   );
 
   fastify.get(
@@ -60,7 +60,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
         const productDetailsPromises = backProducts.map(async (product) => {
           try {
             const response = await axios.get(
-              `http://jem_api:3000/product/${product.productCode}`
+              `http://jem_api:3000/product/${product.productCode}`,
             );
 
             if (response.data && response.status === 200) {
@@ -72,14 +72,14 @@ export async function productsRoutes(fastify: FastifyInstance) {
             }
           } catch (error) {
             fastify.log.error(
-              `Failed to fetch product details for ${product.productCode}: ${error}`
+              `Failed to fetch product details for ${product.productCode}: ${error}`,
             );
           }
           return null;
         });
 
         const products = (await Promise.all(productDetailsPromises)).filter(
-          (product) => product !== null
+          (product) => product !== null,
         );
 
         return reply.status(200).send(products);
@@ -89,7 +89,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
-    }
+    },
   );
 
   fastify.get(
@@ -144,7 +144,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
 
         try {
           const response = await axios.get(
-            `http://jem_api:3000/product/${backProduct.productCode}`
+            `http://jem_api:3000/product/${backProduct.productCode}`,
           );
 
           if (response.data && response.status === 200) {
@@ -161,7 +161,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           }
         } catch (error) {
           fastify.log.error(
-            `Failed to fetch product details for ${backProduct.productCode}: ${error}`
+            `Failed to fetch product details for ${backProduct.productCode}: ${error}`,
           );
           return reply
             .status(500)
@@ -173,7 +173,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
-    }
+    },
   );
 
   fastify.post(
@@ -228,7 +228,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
-    }
+    },
   );
 
   fastify.put(
@@ -281,7 +281,7 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
-    }
+    },
   );
 
   fastify.delete(
@@ -327,6 +327,6 @@ export async function productsRoutes(fastify: FastifyInstance) {
           .status(500)
           .send({ status: 500, message: "Internal Server Error" });
       }
-    }
+    },
   );
 }
